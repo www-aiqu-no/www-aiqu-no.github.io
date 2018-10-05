@@ -1,6 +1,15 @@
-# Information here..
+# Information here
 
-## Certificate Authority
+## Tools
+
+- openssl
+- cfssl (cloudflare)
+
+## OpenSSL
+
+Homepage: xxx
+
+#### Certificate Authority Keys
 
 1) Generate private key: ca.key
 ````bash
@@ -25,7 +34,7 @@ Answer at minimum the following question(s):
 
 This public root-certificate (ca.pem) should be installed on all devices that will use your self-signed certificates
 
-## Servers
+#### Server Keys
 
 1) Generate private key: example.key
 ````bash
@@ -39,8 +48,16 @@ openssl req -new -key example.key -out example.csr
 NOTE: This contains public key (derived from private key) and required information
 
 !SAN replaces CN!
+
 3) Create SAN configuration file example.cnf
+
 4) Sign server.csr with ca.key & ca.crt: server.crt / server.pem
 ````bash
 openssl x509 -req -extensions v3_req -days 365 -in example.csr -CAkey ca.key -CA ca.pem -CAcreateserial -out example.crt -sha256 -extfile example.cnf
 ````
+## CFSSL
+
+Homepage:
+
+#### Certificate Authority
+...
